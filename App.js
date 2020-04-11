@@ -17,19 +17,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      fart: 'yes, i do',
       isAuthenticationReady: false,
       isAuthenticated: false
     };
 
     if (!firebase.apps.length) { firebase.initializeApp(ApiKeys.FirebaseConfig); }
   }
-
+  
   render() {
+    console.warn(this.fart);
     return (
 
       <NavigationContainer>
-      {(this.isAuthenticated) ? (
+      {this.isAuthenticated ? (
         
           <AuthStack.Navigator>
             <AuthStack.Screen name='LoginScreen' component={LoginScreen} />
@@ -37,12 +38,9 @@ export default class App extends React.Component {
             <AuthStack.Screen name='ForgotPasswordScreen'component={ForgotPasswordScreen}/>
           </AuthStack.Navigator>
         ) : (
-
            <RootStack.Navigator>
           <RootStack.Screen name='HomeScreen' component={HomeScreen} />
           </RootStack.Navigator>
-
-
         )
       }
 
