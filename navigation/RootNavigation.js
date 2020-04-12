@@ -5,9 +5,9 @@ import SignupScreen from '../screens/auth/SignupScreen'
 import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from '../screens/HomeScreen'
 
-
-
+const RootStack = createStackNavigator();
 
 
 
@@ -20,8 +20,11 @@ export default class RootNavigation extends React.Component {
 
 render () {
   return (
-<View><Text>Root Nav</Text></View>
-
+    <NavigationContainer>
+    <RootStack.Navigator>
+      <RootStack.Screen name='HomeScreen' component={HomeScreen} />
+    </RootStack.Navigator>
+    </NavigationContainer>
   );
 }
 }
