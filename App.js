@@ -16,7 +16,7 @@ export default class App extends React.Component {
     this.state = {
       isLoadingComplete: false,
       isAuthenticationReady: false,
-      isAuthenticated: false,
+      isAuthenticated: false
     };
 
     // Initialize firebase...
@@ -30,20 +30,24 @@ export default class App extends React.Component {
   }
 
   render() {
+
     if ((!this.state.isLoadingComplete || !this.state.isAuthenticationReady) && !this.props.skipLoadingScreen) {
       return (
+        
         <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
+        startAsync={this._loadResourcesAsync}
+        onError={this._handleLoadingError}
+        onFinish={this._handleFinishLoading}
         />
+        
       );
     } else {
+      {console.log(this.state.isAuthenticated)}
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
-          {(this.state.isAuthenticated) ? <RootNavigation /> : <AuthNavigation/>}
+          {(this.state.isAuthenticated) ?  <RootNavigation /> : <AuthNavigation /> }
         </View>
       );
     }
