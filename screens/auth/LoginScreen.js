@@ -18,7 +18,7 @@ export default class LoginScreen extends React.Component {
   }
 
   onCreateAccountPress = () => {
-
+    this.props.navigation.navigate("SignupScreen")
   }
 
 render () {
